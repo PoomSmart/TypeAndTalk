@@ -1,0 +1,8 @@
+Package: org.thebigboss.typeandtalk
+Name: TypeAndTalk
+Depends: mobilesubstrate, firmware (>= 7.0)
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Type and Talk mode for Dictation.
+Maintainer: PoomSmart
+Author: PoomSmart
