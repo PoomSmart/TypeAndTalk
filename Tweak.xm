@@ -73,7 +73,7 @@ static char tatSpecifierKey;
 	if (MSHookIvar<NSMutableArray *>(self, "_specifiers") != nil)
 		return %orig();
 	NSMutableArray *specifiers = %orig();
-	NSUInteger insertionIndex;
+	NSUInteger insertionIndex = NSNotFound;
 	for (PSSpecifier *spec in specifiers) {
 		if ([[spec propertyForKey:@"label"] isEqualToString:@"PERIOD_SHORTCUT"])
 			insertionIndex = [specifiers indexOfObject:spec];
