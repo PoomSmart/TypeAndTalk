@@ -8,17 +8,19 @@ extern NSString *const PSKeyNameKey;
 extern NSString *const PSTableCellKey;
 extern NSString *const PSDefaultValueKey;
 NSString *const tatKey = @"KeyboardTypeAndTalk";
-NSString *const keyboardPrefPath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/com.apple.keyboard.plist"];
-
-@interface UIKeyboardPreferencesController : NSObject
-+ (UIKeyboardPreferencesController *)sharedPreferencesController;
-- (BOOL)boolForKey:(NSString *)key;
-- (void)synchronizePreferences;
-@end
+NSString *const keyboardPrefPath = @"/var/mobile/Library/Preferences/com.apple.keyboard.plist";
 
 %group tat
 
 %hook UIDictationController
+
++ (int)viewMode
+{
+	int orig = %orig;
+	NSDictionary *prefDict = [NSDictionary dictionaryWithContentsOfFile:keyboardPrefPath] ?: [NSDictionary dictionary];
+	BOOL enabled = [prefDict[tatKey] boolValue];
+	return enabled ? 5 : orig;
+}
 
 + (BOOL)usingTypeAndTalk
 {
