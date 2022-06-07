@@ -1,9 +1,7 @@
 TypeAndTalk
 ==========
 
-One of Apple's hidden/disabled features of Dictation.
-
-Requires iOS 7 or above.
+Use Dictation while typing.
 
 Screenshots
 ==========
